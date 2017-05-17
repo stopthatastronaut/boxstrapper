@@ -1,4 +1,8 @@
-# choco
+<#
+    Sets up quite a lot of what Jason needs on a new laptop. There's probably a lot more, so this will grow over time.
+#>
+
+# chocolatey
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 @(
@@ -12,24 +16,25 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
     "putty",
     "awstools.powershell",
     "sysinternals",
-    "haroopad"
+    "haroopad",
+    "evernote"
 ) | % { cinst $_ -y }
 
-#psreadline
-
+# psreadline
 Install-Package psreadline -force -skippublishercheck # why is ths not properly signed?
+
+# azureRM
 Install-Module AzureRM -Force
 
+# repo path. Why here? habit, pretty much
 if(-not (Test-Path $home\source\repos))
 {
     New-Item $home\source\repos -force
 }
 
-New-Alias $repos $home\source\repos
-
+# ps help (as a job because YAWN)
 Start-Job { Update-Help } # in the background
 
 # Octopus deploy cmd line tools
-
 iwr https://octopus.com/downloads/latest/CommandLineTools -out-file $env:tmp\Octopus.tools.zip
 Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
