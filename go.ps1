@@ -36,5 +36,10 @@ if(-not (Test-Path $home\source\repos))
 Start-Job { Update-Help } # in the background
 
 # Octopus deploy cmd line tools
-iwr https://octopus.com/downloads/latest/CommandLineTools -out-file $env:tmp\Octopus.tools.zip
+if(-not (Test-Path c:\Octopus\Tools))
+{
+    New-Item c:\Octopus\Tools -type directory -force
+}
+
+iwr https://octopus.com/downloads/latest/CommandLineTools -outfile $env:tmp\Octopus.tools.zip
 Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
