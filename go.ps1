@@ -14,6 +14,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
     "NotepadPlusPlus",
     "pscx",
     "carbon",
+    "docker-for-windows",
     "putty",
     "awstools.powershell",
     "nodejs",
