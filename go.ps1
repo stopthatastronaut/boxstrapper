@@ -10,30 +10,40 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/in
     "poshgit",
     "googlechrome",
     "visualstudiocode",
+    "VisualStudio2017Professional",
     "NotepadPlusPlus",
     "pscx",
     "carbon",
     "putty",
     "awstools.powershell",
+    "nodejs",
     "sysinternals",
     "haroopad",
     "evernote",
     "dashlane",
     "zoom",
     "slack",
-    "dotnetcore"
+    "dotnetcore",
+    "awscli",
+    "vagrant"
 ) | % { cinst $_ -y }
 
 # psreadline
-Install-Package psreadline -force -skippublishercheck # why is this not properly signed?
+Install-Package psreadline -verbose -force -skippublishercheck # why is this not properly signed?
 
 # azureRM
-Install-Module AzureRM -Force
+Install-Module AzureRM -Force -verbose
+
+
+Install-Module ACMESharp -Force -verbose 
 
 # repo path. Why here? habit, pretty much
-if(-not (Test-Path $home\source\repos))
+$repopath = "$home\source\repos"
+if(-not (Test-Path $repopath ))
 {
-    New-Item $home\source\repos -force
+    New-Item $repopath -force
+    $o = new-object -com shell.application
+    $o.Namespace($repopath).Self.InvokeVerb("pintohome")
 }
 
 # ps help (as a job because YAWN)
@@ -61,3 +71,8 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "redhat.vscode-yaml"
 ) | % { code --install-extension $_ }
 
+# dotnet new
+dotnet new -i Amazon.Lambda.Templates::* 
+
+# azure functions tools
+npm i -g azure-functions-core-tools
