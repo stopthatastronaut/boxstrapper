@@ -2,6 +2,8 @@
     Sets up quite a lot of what Jason needs on a new laptop. There's probably a lot more, so this will grow over time.
 #>
 
+Set-ExecutionPolicy unrestricted
+
 # chocolatey
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
