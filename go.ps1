@@ -7,6 +7,10 @@ Set-ExecutionPolicy unrestricted
 # chocolatey
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+# reload so we seee choco
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
+
+
 @(
     "git",
     "poshgit",
