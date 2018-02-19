@@ -48,8 +48,8 @@ Install-Module ACMESharp -Force -verbose
 $repopath = "$home\source\repos"
 if(-not (Test-Path $repopath ))
 {
-    New-Item $repopath -force
-    $o = new-object -com shell.application
+    New-Item $repopath -force -type Directory
+    $o = new-object -com shell.application  
     $o.Namespace($repopath).Self.InvokeVerb("pintohome")
 }
 
