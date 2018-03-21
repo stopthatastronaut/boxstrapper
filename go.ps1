@@ -32,7 +32,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
     "slack",
     "dotnetcore",
     "awscli",
-    "vagrant"
+    "vagrant",
+	"nuget.commandline"
 ) | % { cinst $_ -y }
 
 # psreadline
@@ -65,10 +66,11 @@ if(-not (Test-Path c:\Octopus\Tools))
 iwr https://octopus.com/downloads/latest/CommandLineTools -outfile $env:tmp\Octopus.tools.zip
 Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
 
-
+# code --list-extensions will give you a list
 # vs code extensions
 @(
     "aws-scripting-guy.cform",
+    "eamodio.gitlens",
     "Ionide.Ionide-fsharp",
     "ms-vscode.csharp",
     "ms-vscode.PowerShell",
@@ -83,3 +85,16 @@ dotnet new -i Amazon.Lambda.Templates::*
 
 # azure functions tools
 npm i -g azure-functions-core-tools
+
+# apply the pumpkin spice icon to Visual Studio Code
+
+<#
+$objShell = New-Object -comObject Shell.Application
+$objDesktop = $objShell.NameSpace(0X0)
+$shortcutFilename = "Visual Studio Code.lnk"
+$objFolderItem = $objDesktop.ParseName($shortcutFilename)
+$objShortcut = $objFolderItem.GetLink 
+$iconpath = Resolve-Path ".\512px_visual_studio_code_1_17_icon_svg_4ba_icon.ico"
+$objShortcut.SetIconLocation($iconpath,0)
+$objShortcut.Save()
+#>
