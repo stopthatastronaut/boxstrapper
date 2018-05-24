@@ -82,6 +82,25 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "ms-azuretools.vscode-azurefunctions"
 ) | % { code --install-extension $_ }
 
+# set the theme
+$spath = "$home\AppData\Roaming\Code\User\settings.json"
+$theme = 'Night Owl'
+if(Test-Path $spath) # does this exist by default? No idea. Handle all exigencies anyway.
+{    
+    $codesettings = gc $spath -Verbose | ConvertFrom-Json
+    if($codesettings.'workbench.colorTheme')
+    {
+        $codesettings.'workbench.colorTheme' = $theme
+    }
+    else {
+        $codesettings | Add-Member -MemberType NoteProperty -Name 'workbench.colorTheme' -Value $theme -Verbose
+    }
+    $codesettings | ConvertTo-json | Out-File $spath -verbose
+}
+else {
+     @{ 'workbench.colorTheme' = $theme } | ConvertTo-json | Out-File $spath -verbose
+}
+
 # dotnet new
 dotnet new -i Amazon.Lambda.Templates::* 
 
@@ -90,13 +109,14 @@ npm i -g azure-functions-core-tools
 
 # apply the pumpkin spice icon to Visual Studio Code
 
-<#
+# it's in "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio Code"
+
 $objShell = New-Object -comObject Shell.Application
-$objDesktop = $objShell.NameSpace(0X0)
+$objDesktop = $objShell.NameSpace("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio Code")
 $shortcutFilename = "Visual Studio Code.lnk"
 $objFolderItem = $objDesktop.ParseName($shortcutFilename)
 $objShortcut = $objFolderItem.GetLink 
-$iconpath = Resolve-Path ".\512px_visual_studio_code_1_17_icon_svg_4ba_icon.ico"
+$iconpath = Resolve-Path ".\512px_visual_studio_code_1_17_icon_svg_4ba_icon.ico" | select -expand Path
 $objShortcut.SetIconLocation($iconpath,0)
 $objShortcut.Save()
-#>
+
