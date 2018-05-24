@@ -33,8 +33,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
     "dotnetcore",
     "awscli",
     "vagrant",
-    "nuget.commandline",
-    "sdras.night-owl"
+    "nuget.commandline"
 ) | % { cinst $_ -y }
 
 # psreadline
@@ -78,7 +77,8 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "PeterJausovec.vscode-docker",
     "ms-kubernetes-tools.vscode-kubernetes-tools",
     "ms-python.python",
-    "redhat.vscode-yaml"
+    "redhat.vscode-yaml",
+    "sdras.night-owl"
 ) | % { code --install-extension $_ }
 
 # dotnet new
