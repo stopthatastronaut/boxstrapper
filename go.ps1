@@ -33,7 +33,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
     "dotnetcore",
     "awscli",
     "vagrant",
-	"nuget.commandline"
+    "nuget.commandline",
+    "sdras.night-owl"
 ) | % { cinst $_ -y }
 
 # psreadline
