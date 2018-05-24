@@ -78,7 +78,8 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "ms-kubernetes-tools.vscode-kubernetes-tools",
     "ms-python.python",
     "redhat.vscode-yaml",
-    "sdras.night-owl"
+    "sdras.night-owl",
+    "ms-azuretools.vscode-azurefunctions"
 ) | % { code --install-extension $_ }
 
 # dotnet new
