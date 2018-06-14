@@ -66,6 +66,11 @@ if(-not (Test-Path c:\Octopus\Tools))
 iwr https://octopus.com/downloads/latest/CommandLineTools -outfile $env:tmp\Octopus.tools.zip
 Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
 
+# F# Compiler SDK
+
+Invoke-WebRequest -Uri "https://download.microsoft.com/download/F/3/D/F3D6045E-4040-4058-ADAD-2698F1793CBC/Microsoft.FSharp.SDK.Core.msi" -OutFile "$home\Downloads\Microsoft.FSharp.SDK.Core.msi"
+msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
+
 # code --list-extensions will give you a list
 # vs code extensions
 @(
