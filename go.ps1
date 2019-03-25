@@ -33,7 +33,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
     "dotnetcore",
     "awscli",
     "vagrant",
-    "nuget.commandline"
+    "nuget.commandline",
+    "rubymine"
 ) | % { cinst $_ -y }
 
 # psreadline
@@ -43,14 +44,14 @@ Install-Package psreadline -verbose -force -skippublishercheck # why is this not
 Install-Module AzureRM -Force -verbose
 
 
-Install-Module ACMESharp -Force -verbose 
+Install-Module ACMESharp -Force -verbose
 
 # repo path. Why here? habit, pretty much
 $repopath = "$home\source\repos"
 if(-not (Test-Path $repopath ))
 {
     New-Item $repopath -force -type Directory
-    $o = new-object -com shell.application  
+    $o = new-object -com shell.application
     $o.Namespace($repopath).Self.InvokeVerb("pintohome")
 }
 
@@ -77,6 +78,8 @@ msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
     "aws-scripting-guy.cform",
     "eamodio.gitlens",
     "Ionide.Ionide-fsharp",
+    "Ionide-FAKE",
+    "Ionide-Paket",
     "ms-vscode.csharp",
     "ms-vscode.PowerShell",
     "PeterJausovec.vscode-docker",
@@ -91,7 +94,7 @@ msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
 $spath = "$home\AppData\Roaming\Code\User\settings.json"
 $theme = 'Night Owl'
 if(Test-Path $spath) # does this exist by default? No idea. Handle all exigencies anyway.
-{    
+{
     $codesettings = gc $spath -Verbose | ConvertFrom-Json
     if($codesettings.'workbench.colorTheme')
     {
@@ -107,7 +110,7 @@ else {
 }
 
 # dotnet new
-dotnet new -i Amazon.Lambda.Templates::* 
+dotnet new -i Amazon.Lambda.Templates::*
 
 # azure functions tools
 npm i -g azure-functions-core-tools
@@ -120,7 +123,7 @@ $objShell = New-Object -comObject Shell.Application
 $objDesktop = $objShell.NameSpace("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio Code")
 $shortcutFilename = "Visual Studio Code.lnk"
 $objFolderItem = $objDesktop.ParseName($shortcutFilename)
-$objShortcut = $objFolderItem.GetLink 
+$objShortcut = $objFolderItem.GetLink
 $iconpath = Resolve-Path ".\512px_visual_studio_code_1_17_icon_svg_4ba_icon.ico" | select -expand Path
 $objShortcut.SetIconLocation($iconpath,0)
 $objShortcut.Save()
