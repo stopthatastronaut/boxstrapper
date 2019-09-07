@@ -127,4 +127,3 @@ $objShortcut = $objFolderItem.GetLink
 $iconpath = Resolve-Path ".\512px_visual_studio_code_1_17_icon_svg_4ba_icon.ico" | select -expand Path
 $objShortcut.SetIconLocation($iconpath,0)
 $objShortcut.Save()
-
