@@ -87,7 +87,8 @@ msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
     "ms-python.python",
     "redhat.vscode-yaml",
     "sdras.night-owl",
-    "ms-azuretools.vscode-azurefunctions"
+    "ms-azuretools.vscode-azurefunctions",
+    "Azurite.azurite"
 ) | % { code --install-extension $_ }
 
 # set the theme
@@ -110,7 +111,10 @@ else {
 }
 
 # dotnet new
-dotnet new -i Amazon.Lambda.Templates::*
+dotnet new -i "Amazon.Lambda.Templates::*"
+dotnet new -i "Microsoft.AspNetCore.Blazor.Templates::3.0.0-*"
+dotnet new -i "WebAPI.FSharp.Template::*"
+dotnet new -i "RaspberryPi.Template::*"
 
 # azure functions tools
 npm i -g azure-functions-core-tools
