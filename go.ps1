@@ -8,7 +8,7 @@ Set-ExecutionPolicy unrestricted
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # reload so we seee choco
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 
 
 @(
@@ -48,8 +48,7 @@ Install-Module ACMESharp -Force -verbose
 
 # repo path. Why here? habit, pretty much
 $repopath = "$home\source\repos"
-if(-not (Test-Path $repopath ))
-{
+if (-not (Test-Path $repopath )) {
     New-Item $repopath -force -type Directory
     $o = new-object -com shell.application
     $o.Namespace($repopath).Self.InvokeVerb("pintohome")
@@ -59,8 +58,7 @@ if(-not (Test-Path $repopath ))
 Start-Job { Update-Help } # in the background
 
 # Octopus deploy cmd line tools
-if(-not (Test-Path c:\Octopus\Tools))
-{
+if (-not (Test-Path c:\Octopus\Tools)) {
     New-Item c:\Octopus\Tools -type directory -force
 }
 
@@ -88,17 +86,18 @@ msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
     "redhat.vscode-yaml",
     "sdras.night-owl",
     "ms-azuretools.vscode-azurefunctions",
-    "Azurite.azurite"
+    "Azurite.azurite",
+    "vsciot-vscode.vscode-arduino",
+    "ms-vscode.azurecli",
+    "KingWampy.raspberrypi-sync"
 ) | % { code --install-extension $_ }
 
 # set the theme
 $spath = "$home\AppData\Roaming\Code\User\settings.json"
 $theme = 'Night Owl'
-if(Test-Path $spath) # does this exist by default? No idea. Handle all exigencies anyway.
-{
+if (Test-Path $spath) { # does this exist by default? No idea. Handle all exigencies anyway.
     $codesettings = gc $spath -Verbose | ConvertFrom-Json
-    if($codesettings.'workbench.colorTheme')
-    {
+    if ($codesettings.'workbench.colorTheme') {
         $codesettings.'workbench.colorTheme' = $theme
     }
     else {
@@ -107,7 +106,7 @@ if(Test-Path $spath) # does this exist by default? No idea. Handle all exigencie
     $codesettings | ConvertTo-json | Out-File $spath -verbose
 }
 else {
-     @{ 'workbench.colorTheme' = $theme } | ConvertTo-json | Out-File $spath -verbose
+    @{ 'workbench.colorTheme' = $theme } | ConvertTo-json | Out-File $spath -verbose
 }
 
 # dotnet new
