@@ -34,7 +34,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
     "awscli",
     "vagrant",
     "nuget.commandline",
-    "rubymine"
+    "rubymine",
+    "insomnia"
 ) | % { cinst $_ -y }
 
 # psreadline
