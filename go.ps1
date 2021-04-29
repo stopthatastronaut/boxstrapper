@@ -90,7 +90,8 @@ msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
     "Azurite.azurite",
     "vsciot-vscode.vscode-arduino",
     "ms-vscode.azurecli",
-    "KingWampy.raspberrypi-sync"
+    "KingWampy.raspberrypi-sync",
+    "Pylance"
 ) | % { code --install-extension $_ }
 
 # set the theme
