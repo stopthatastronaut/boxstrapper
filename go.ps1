@@ -91,7 +91,8 @@ msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
     "vsciot-vscode.vscode-arduino",
     "ms-vscode.azurecli",
     "KingWampy.raspberrypi-sync",
-    "Pylance"
+    "Pylance",
+    "terraform"
 ) | % { code --install-extension $_ }
 
 # set the theme
