@@ -16,12 +16,9 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
     "poshgit",
     "googlechrome",
     "visualstudiocode",
-    "VisualStudio2017Professional",
     "NotepadPlusPlus",
-    "pscx",
     "carbon",
     "docker-for-windows",
-    "putty",
     "awstools.powershell",
     "nodejs",
     "sysinternals",
@@ -35,7 +32,8 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
     "vagrant",
     "nuget.commandline",
     "rubymine",
-    "insomnia"
+    "insomnia",
+    "ngrok"
 ) | % { cinst $_ -y }
 
 # psreadline
@@ -44,7 +42,7 @@ Install-Package psreadline -verbose -force -skippublishercheck # why is this not
 # azureRM
 Install-Module Az -Force -verbose -AllowClobber
 
-
+# letsencrypt
 Install-Module ACMESharp -Force -verbose
 
 # repo path. Why here? habit, pretty much
