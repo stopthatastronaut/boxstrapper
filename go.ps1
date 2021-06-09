@@ -2,40 +2,25 @@
     Sets up quite a lot of what Jason needs on a new laptop. There's probably a lot more, so this will grow over time.
 #>
 
-Set-ExecutionPolicy unrestricted
+$on_mac = (TERM_PROGRAM -eq "Apple_Terminal")
 
-# chocolatey
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+# Go get the SSH keys!
+
+if ($on_mac) {
+    # load some functions for Mac
+    . Mac/mac-specific.ps1
+}
+else {
+    # load some functions for Windows
+    . Windows/windows-specific.ps1
+}
+
+Set-ExecutionPolicy unrestricted
 
 # reload so we seee choco
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 
 
-@(
-    "git",
-    "poshgit",
-    "googlechrome",
-    "visualstudiocode",
-    "VisualStudio2017Professional",
-    "NotepadPlusPlus",
-    "pscx",
-    "carbon",
-    "docker-for-windows",
-    "putty",
-    "awstools.powershell",
-    "nodejs",
-    "sysinternals",
-    "haroopad",
-    "evernote",
-    "dashlane",
-    "zoom",
-    "slack",
-    "dotnetcore",
-    "awscli",
-    "vagrant",
-    "nuget.commandline",
-    "rubymine"
-) | % { cinst $_ -y }
 
 # psreadline
 Install-Package psreadline -verbose -force -skippublishercheck # why is this not properly signed?
@@ -62,13 +47,9 @@ if (-not (Test-Path c:\Octopus\Tools)) {
     New-Item c:\Octopus\Tools -type directory -force
 }
 
-iwr https://octopus.com/downloads/latest/CommandLineTools -outfile $env:tmp\Octopus.tools.zip
+Invoke-WebRequest -uri https://octopus.com/downloads/latest/CommandLineTools -outfile $env:tmp\Octopus.tools.zip
 Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
 
-# F# Compiler SDK
-
-Invoke-WebRequest -Uri "https://download.microsoft.com/download/F/3/D/F3D6045E-4040-4058-ADAD-2698F1793CBC/Microsoft.FSharp.SDK.Core.msi" -OutFile "$home\Downloads\Microsoft.FSharp.SDK.Core.msi"
-msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
 
 # code --list-extensions will give you a list
 # vs code extensions
@@ -90,12 +71,13 @@ msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
     "vsciot-vscode.vscode-arduino",
     "ms-vscode.azurecli",
     "KingWampy.raspberrypi-sync"
-) | % { code --install-extension $_ }
+) | ForEach-Item { code --install-extension $_ }
 
 # set the theme
 $spath = "$home\AppData\Roaming\Code\User\settings.json"
 $theme = 'Night Owl'
-if (Test-Path $spath) { # does this exist by default? No idea. Handle all exigencies anyway.
+if (Test-Path $spath) {
+    # does this exist by default? No idea. Handle all exigencies anyway.
     $codesettings = gc $spath -Verbose | ConvertFrom-Json
     if ($codesettings.'workbench.colorTheme') {
         $codesettings.'workbench.colorTheme' = $theme
