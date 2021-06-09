@@ -21,6 +21,30 @@ Set-ExecutionPolicy unrestricted
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 
 
+@(
+    "git",
+    "poshgit",
+    "googlechrome",
+    "visualstudiocode",
+    "NotepadPlusPlus",
+    "carbon",
+    "docker-for-windows",
+    "awstools.powershell",
+    "nodejs",
+    "sysinternals",
+    "haroopad",
+    "evernote",
+    "dashlane",
+    "zoom",
+    "slack",
+    "dotnetcore",
+    "awscli",
+    "vagrant",
+    "nuget.commandline",
+    "rubymine",
+    "insomnia",
+    "ngrok"
+) | % { cinst $_ -y }
 
 # psreadline
 Install-Package psreadline -verbose -force -skippublishercheck # why is this not properly signed?
@@ -28,7 +52,7 @@ Install-Package psreadline -verbose -force -skippublishercheck # why is this not
 # azureRM
 Install-Module Az -Force -verbose -AllowClobber
 
-
+# letsencrypt
 Install-Module ACMESharp -Force -verbose
 
 # repo path. Why here? habit, pretty much
@@ -70,7 +94,9 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "Azurite.azurite",
     "vsciot-vscode.vscode-arduino",
     "ms-vscode.azurecli",
-    "KingWampy.raspberrypi-sync"
+    "KingWampy.raspberrypi-sync",
+    "Pylance",
+    "terraform"
 ) | ForEach-Item { code --install-extension $_ }
 
 # set the theme
