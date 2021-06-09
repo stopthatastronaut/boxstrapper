@@ -8,27 +8,24 @@ $on_mac = (TERM_PROGRAM -eq "Apple_Terminal")
 
 if ($on_mac) {
     # load some functions for Mac
-    . Mac/mac-specific.ps1
+    . ./../Mac/mac-specific.ps1
 }
 else {
     # load some functions for Windows
-    . Windows/windows-specific.ps1
+    . ./../Windows/windows-specific.ps1
 }
-
-Set-ExecutionPolicy unrestricted
-
-# reload so we seee choco
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
-
 
 @(
     "git",
     "poshgit",
     "googlechrome",
     "visualstudiocode",
+    "VisualStudio2017Professional",
     "NotepadPlusPlus",
+    "pscx",
     "carbon",
     "docker-for-windows",
+    "putty",
     "awstools.powershell",
     "nodejs",
     "sysinternals",
@@ -41,10 +38,20 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
     "awscli",
     "vagrant",
     "nuget.commandline",
-    "rubymine",
-    "insomnia",
-    "ngrok"
-) | % { cinst $_ -y }
+    "rubymine"
+) | ForEach-Object { cinst $_ -y }
+
+Set-ExecutionPolicy unrestricted
+
+
+# F# Compiler SDK
+
+Invoke-WebRequest -Uri "https://download.microsoft.com/download/F/3/D/F3D6045E-4040-4058-ADAD-2698F1793CBC/Microsoft.FSharp.SDK.Core.msi" -OutFile "$home\Downloads\Microsoft.FSharp.SDK.Core.msi"
+msiexec /i "$home\Downloads\Microsoft.FSharp.SDK.Core.msi" /quiet
+
+
+# reload so we seee choco
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 
 # psreadline
 Install-Package psreadline -verbose -force -skippublishercheck # why is this not properly signed?
@@ -126,4 +133,4 @@ dotnet new -i "RaspberryPi.Template::*"
 # azure functions tools
 npm i -g azure-functions-core-tools
 
-./set-vscode-icon.ps1
+./../set-vscode-icon.ps1
