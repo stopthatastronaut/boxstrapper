@@ -92,6 +92,7 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "Ionide-Paket",
     "ms-vscode.csharp",
     "ms-vscode.PowerShell",
+    "ms-azuretools.vscode-bicep",
     "PeterJausovec.vscode-docker",
     "ms-kubernetes-tools.vscode-kubernetes-tools",
     "ms-python.python",
@@ -103,7 +104,8 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "ms-vscode.azurecli",
     "KingWampy.raspberrypi-sync",
     "Pylance",
-    "terraform"
+    "terraform",
+    "Bicep"
 ) | ForEach-Item { code --install-extension $_ }
 
 # set the theme
