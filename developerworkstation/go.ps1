@@ -105,7 +105,8 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "KingWampy.raspberrypi-sync",
     "Pylance",
     "terraform",
-    "Bicep"
+    "Bicep",
+    "mtxr.sqltools"   # sqlite and other db engines
 ) | ForEach-Item { code --install-extension $_ }
 
 # set the theme
