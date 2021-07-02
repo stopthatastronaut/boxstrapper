@@ -107,7 +107,7 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "terraform",
     "Bicep",
     "mtxr.sqltools"   # sqlite and other db engines
-) | ForEach-Item { code --install-extension $_ }
+) | ForEach-Object { code --install-extension $_ }
 
 # set the theme
 $spath = "$home\AppData\Roaming\Code\User\settings.json"
