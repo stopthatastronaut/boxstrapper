@@ -106,7 +106,8 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "Pylance",
     "terraform",
     "Bicep",
-    "mtxr.sqltools"   # sqlite and other db engines
+    "mtxr.sqltools",   # sqlite and other db engines
+    "hashicorp.terraform"
 ) | ForEach-Object { code --install-extension $_ }
 
 # set the theme
