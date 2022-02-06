@@ -56,6 +56,9 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 # psreadline
 Install-Package psreadline -verbose -force -skippublishercheck # why is this not properly signed?
 
+# AWS Lambda Tools
+Install-Module AWSLambdaPSCore -Force
+
 # azureRM
 Install-Module Az -Force -verbose -AllowClobber
 
