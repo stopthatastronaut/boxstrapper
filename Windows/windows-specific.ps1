@@ -11,7 +11,9 @@ Function Install-PackageManager {
     "dashlane",
     "zoom",
     "firefox",
-    "powershell-core"
+    "powershell-core",
+    "meshmixer",
+    "cura"
 ) | ForEach-Object { cinst $_ -y }
 
 

@@ -7,7 +7,7 @@ $objDesktop = $objShell.NameSpace("C:\ProgramData\Microsoft\Windows\Start Menu\P
 $shortcutFilename = "Visual Studio Code.lnk"
 $objFolderItem = $objDesktop.ParseName($shortcutFilename)
 $objShortcut = $objFolderItem.GetLink
-$iconpath = Resolve-Path ".\512px_visual_studio_code_1_17_icon_svg_4ba_icon.ico" | select -expand Path
+$iconpath = Resolve-Path ".\Common\512px_visual_studio_code_1_17_icon_svg_4ba_icon.ico" | select -expand Path
 $objShortcut.SetIconLocation($iconpath,0)
 $objShortcut.Save()
 
