@@ -115,10 +115,11 @@ Expand-Archive $env:tmp\Octopus.tools.zip c:\Octopus\Tools -force
     "ms-vscode.azurecli",
     "KingWampy.raspberrypi-sync",
     "Pylance",
-    "terraform",
+    "hashicorp.terraform",
     "Bicep",
     "mtxr.sqltools",   # sqlite and other db engines
-    "hashicorp.terraform"
+    "hashicorp.terraform",
+    "chrisdias.vscode-opennewinstance"
 ) | ForEach-Object { code --install-extension $_ }
 
 # set the theme
