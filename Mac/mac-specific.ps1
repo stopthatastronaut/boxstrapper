@@ -8,6 +8,8 @@ brew install macdown
 brew install kid3
 brew install moom
 brew install krita
+brew install finch
+
 
 brew tap azure/functions
 brew install azure-functions-core-tools@4
@@ -19,5 +21,15 @@ defaults write http://com.apple.Finder AppleShowAllFiles true
 
 brew install starship
 
+if(-not (Test-Path $profile)) {
+    New-item -force $PROFILE
+}
+
+
 'eval "$(starship init zsh)"' >> ~/.zshrc
+'eval "$(starship init powershell)"' >> $profile
+
+brew install dashlane/tap/dashlane-cli
+
+
 
