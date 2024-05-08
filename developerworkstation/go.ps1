@@ -19,7 +19,7 @@ else {
     "git",
     "poshgit",
     "googlechrome",
-    "visualstudiocode",
+    "vscode",
     "VisualStudio2017Professional",
     "NotepadPlusPlus",
     "pscx",
