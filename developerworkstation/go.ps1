@@ -149,3 +149,6 @@ dotnet new -i "RaspberryPi.Template::*"
 npm i -g azure-functions-core-tools
 
 ./../set-vscode-icon.ps1
+
+choco install nerd-fonts-FiraCode -y
+choco install starship -y 
