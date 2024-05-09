@@ -151,4 +151,12 @@ npm i -g azure-functions-core-tools
 ./../set-vscode-icon.ps1
 
 choco install nerd-fonts-FiraCode -y
+choco install nerd-fonts-RobotoMono -y
 choco install starship -y 
+
+Install-Module windowsconsolefonts -force 
+
+ipmo WindowsConsoleFonts
+
+Set-COnsoleFont "RobotoMono Nerd Font Propo Th"
+
