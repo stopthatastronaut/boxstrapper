@@ -152,11 +152,12 @@ npm i -g azure-functions-core-tools
 
 choco install nerd-fonts-FiraCode -y
 choco install nerd-fonts-RobotoMono -y
+choco install nerd-fonts-UbuntuMono -y
 choco install starship -y 
 
 Install-Module windowsconsolefonts -force 
 
-ipmo WindowsConsoleFonts
+Import-Module WindowsConsoleFonts
 
-Set-COnsoleFont "RobotoMono Nerd Font Propo Th"
+Set-ConsoleFont "RobotoMono Nerd Font Propo Th"
 
