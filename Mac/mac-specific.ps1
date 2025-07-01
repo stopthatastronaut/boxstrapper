@@ -9,7 +9,7 @@ brew install kid3
 brew install moom
 brew install krita
 brew install finch
-
+brew install starship
 
 brew tap azure/functions
 brew install azure-functions-core-tools@4
@@ -19,7 +19,6 @@ brew install azure-functions-core-tools@4
 # show all files by default
 defaults write http://com.apple.Finder AppleShowAllFiles true
 
-brew install starship
 
 if(-not (Test-Path $profile)) {
     New-item -force $PROFILE
