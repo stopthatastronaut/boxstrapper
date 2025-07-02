@@ -4,12 +4,19 @@ Function Install-Thing {
     param($name)
 }
 
+$catalog = gc brewcatalog.txt
+
+$catalog | % {
+    brew install $_
+}
+
 brew install macdown
 brew install kid3
 brew install moom
 brew install krita
 brew install finch
 brew install starship
+brew install python3
 
 brew tap azure/functions
 brew install azure-functions-core-tools@4
@@ -31,4 +38,7 @@ if(-not (Test-Path $profile)) {
 brew install dashlane/tap/dashlane-cli
 
 
+# echo out all defaults
+
+defaults read > ./mac-available-defaults.json
 
