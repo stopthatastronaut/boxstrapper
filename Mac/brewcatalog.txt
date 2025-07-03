@@ -49,7 +49,6 @@ gmp
 gnutls
 go
 graphite2
-handbrake
 harfbuzz
 helm
 highway
@@ -186,17 +185,12 @@ zstd
 1password
 1password-cli
 alfred
-arduino
 audacity
 azure-data-studio
 blender
-brave-browser
 cheatsheet
 cyberduck
-daisydisk
 dbeaver-community
-discord
-epic-games
 finch
 firefox
 font-fira-code-nerd-font
@@ -220,11 +214,7 @@ raspberry-pi-imager
 skype
 slack
 spotify
-steam
 sublime-text
-ultimaker-cura
 vagrant
 visual-studio-code
 vlc
-whatsapp
-zoom
