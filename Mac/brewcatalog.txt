@@ -208,7 +208,6 @@ marta
 microsoft-remote-desktop
 microsoft-teams
 moom
-ngrok
 powershell
 raspberry-pi-imager
 skype
