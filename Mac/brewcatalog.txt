@@ -132,6 +132,7 @@ openexr
 openjdk@11
 openjpeg
 openssl@3
+opentofu
 openvino
 opus
 p11-kit
