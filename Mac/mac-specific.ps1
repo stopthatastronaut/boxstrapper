@@ -4,17 +4,19 @@ Function Install-Thing {
     param($name)
 }
 
+brew install macdown  # ?? 
+brew install kid3     
+brew install moom     # mmoms - need to figure out the licence apply
+brew install krita    # video?
+brew install finch   # docker thing
+brew install act  # github actions
+
 $catalog = gc brewcatalog.txt
 
 $catalog | % {
     brew install $_
 }
 
-brew install macdown
-brew install kid3
-brew install moom
-brew install krita
-brew install finch
 brew install starship
 brew install python3
 
