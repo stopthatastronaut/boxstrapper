@@ -4,11 +4,12 @@ Function Install-Thing {
     param($name)
 }
 
-brew install macdown
-brew install kid3
-brew install moom
-brew install krita
-brew install finch
+brew install macdown  # ?? 
+brew install kid3     
+brew install moom     # mmoms - need to figure out the licence apply
+brew install krita    # video?
+brew install finch   # docker thing
+brew install act  # github actions
 
 
 brew tap azure/functions

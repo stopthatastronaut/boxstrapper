@@ -1,0 +1,1 @@
+# this is for a standard pi. not a 3D printer pi or Microraptor (Home Assistant)
