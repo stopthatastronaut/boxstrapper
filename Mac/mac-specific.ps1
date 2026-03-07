@@ -11,6 +11,14 @@ brew install krita    # video?
 brew install finch   # docker thing
 brew install act  # github actions
 
+$catalog = gc brewcatalog.txt
+
+$catalog | % {
+    brew install $_
+}
+
+brew install starship
+brew install python3
 
 brew tap azure/functions
 brew install azure-functions-core-tools@4
@@ -20,7 +28,6 @@ brew install azure-functions-core-tools@4
 # show all files by default
 defaults write http://com.apple.Finder AppleShowAllFiles true
 
-brew install starship
 
 if(-not (Test-Path $profile)) {
     New-item -force $PROFILE
@@ -33,4 +40,7 @@ if(-not (Test-Path $profile)) {
 brew install dashlane/tap/dashlane-cli
 
 
+# echo out all defaults
+
+defaults read > ./mac-available-defaults.json
 
