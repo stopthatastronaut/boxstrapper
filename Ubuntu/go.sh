@@ -9,10 +9,10 @@
 # Prerequisites
 
 # Update the list of packages
-sudo apt-get update
+sudo apt update
 
 # Install pre-requisite packages.
-sudo apt-get install -y wget apt-transport-https software-properties-common
+sudo apt install -y wget apt-transport-https software-properties-common
 
 # Get the version of Ubuntu
 source /etc/os-release
@@ -27,11 +27,11 @@ sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 
 # Update the list of packages after we added packages.microsoft.com
-sudo apt-get update
+sudo apt update
 
 ###################################
 # Install PowerShell
-sudo apt-get install -y powershell
+sudo apt install -y powershell
 
 # Start PowerShell
 pwsh
@@ -44,5 +44,9 @@ pwsh
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
 sudo dpkg -i minikube_latest_amd64.deb
 
-
+# act
 brew install act    
+
+# terravision
+sudo apt install -y libgraphviz-dev
+pipx install terravision
