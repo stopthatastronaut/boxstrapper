@@ -38,7 +38,9 @@ pwsh
 
 # finch
 
-# starship
+# starship and fonts
+curl -sS https://starship.rs/install.sh | sh
+
 
 # minikube
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
