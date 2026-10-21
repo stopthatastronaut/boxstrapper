@@ -6,3 +6,6 @@ Install-Module powershell-yaml
 Install-Module Plaster # powershell module bootstrapper
 Install-module Sampler
 Install-Module PowershellGet
+Install-Module git-completion
+INstall-Module PSParseHTML
+Install-Module PSSQLite

@@ -12,7 +12,7 @@
 sudo apt-get update
 
 # Install pre-requisite packages.
-sudo apt-get install -y wget apt-transport-https software-properties-common
+sudo apt-get install -y wget apt-transport-https software-properties-common font-manager
 
 # Get the version of Ubuntu
 source /etc/os-release
