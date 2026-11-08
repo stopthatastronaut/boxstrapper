@@ -11,7 +11,7 @@ brew install krita    # video?
 brew install finch   # docker thing
 brew install act  # github actions
 
-$catalog = gc brewcatalog.txt
+$catalog = Get-Content brewcatalog.txt
 
 $catalog | % {
     brew install $_
