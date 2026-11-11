@@ -33,6 +33,9 @@ sudo apt-get update
 # Install PowerShell
 sudo apt-get install -y powershell
 
+# dotnet SDK
+sudo apt-get update && sudo apt-get install -y dotnet-sdk-10.0
+
 # Start PowerShell
 pwsh
 
